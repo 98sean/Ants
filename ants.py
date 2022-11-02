@@ -483,10 +483,7 @@ class Bee(Insect):
 
     def blocked(self):
         """Return True if this Bee cannot advance to the next Place."""
-        # Special handling for NinjaAnt
-        # BEGIN Problem Optional 1
         return self.place.ant is not None
-        # END Problem Optional 1
 
     def action(self, gamestate):
         """A Bee's action stings the Ant that blocks its exit if it is blocked,
@@ -522,15 +519,9 @@ class NinjaAnt(Ant):
     name = 'Ninja'
     damage = 1
     food_cost = 5
-    # OVERRIDE CLASS ATTRIBUTES HERE
-    # BEGIN Problem Optional 1
-    implemented = False   # Change to True to view in the GUI
-    # END Problem Optional 1
+    implemented = False
 
     def action(self, gamestate):
-        # BEGIN Problem Optional 1
-        "*** YOUR CODE HERE ***"
-        # END Problem Optional 1
 
 ############
 # Statuses #
@@ -564,24 +555,17 @@ class LaserAnt(ThrowerAnt):
 
     name = 'Laser'
     food_cost = 10
-    # OVERRIDE CLASS ATTRIBUTES HERE
-    # BEGIN Problem Optional 2
-    implemented = False   # Change to True to view in the GUI
-    # END Problem Optional 2
+    implemented = False
 
     def __init__(self, health=1):
         super().__init__(health)
         self.insects_shot = 0
 
     def insects_in_front(self):
-        # BEGIN Problem Optional 2
         return {}
-        # END Problem Optional 2
 
     def calculate_damage(self, distance):
-        # BEGIN Problem Optional 2
         return 0
-        # END Problem Optional 2
 
     def action(self, gamestate):
         insects_and_distances = self.insects_in_front()
@@ -698,9 +682,7 @@ class GameState:
         self.dimensions = dimensions
         self.active_bees = []
         self.configure(beehive, create_places)
-        # BEGIN Problem 12
         self.has_queen = has_queen
-        # END Problem 12
 
     def configure(self, beehive, create_places):
         """Configure the places in the colony."""
